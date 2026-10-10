@@ -1,0 +1,350 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Rubik Bubbles", Arial, Helvetica, sans-serif;
+  background: radial-gradient(#0f1540 0%, #1b2a6b 35%, #2c3e9e 60%, #4d6bd6 100%);
+  background-attachment: fixed;
+  color: #eef1ff;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.app::before {
+  width: 380px;
+  height: 380px;
+  top: -100px;
+  left: -120px;
+  background: #a182ff;
+  animation: float-blob 5s ease-in-out infinite;
+}
+
+.app::after {
+  width: 420px;
+  height: 420px;
+  bottom: -140px;
+  right: -140px;
+  background: #e0fcff;
+  animation: float-blob 2s ease-in-out infinite reverse;
+}
+
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -40px) scale(1.08); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.header,
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 3.2rem;
+  background: #fa50c1;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: float 5s ease-in-out infinite;
+  display: inline-block;
+}
+
+.header p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #c9d2ff;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.discover-section {
+  text-align: center;
+}
+
+.discover-section h2,
+.ban-section h2,
+.favorites-section h2,
+.history-section h2 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.instructions {
+  max-width: 650px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+  color: #c9d2ff;
+}
+
+.discover-button {
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(40deg, #8f6ff0, #45ebfa);
+  color: white;
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(107, 71, 214, 0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.discover-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(40, 147, 156, 0.5);
+}
+
+.discover-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  margin: 20px auto;
+  padding: 15px;
+  max-width: 700px;
+  background: rgba(255, 90, 90, 0.15);
+  border: 1px solid #ff6b6b;
+  border-radius: 12px;
+  color: #ffd6d6;
+}
+
+.cat-card {
+  position: relative;
+  width: min(700px, 100%);
+  margin: 35px auto;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(10, 10, 40, 0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+.favorite-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  background: rgba(10, 10, 30, 0.55);
+  color: #ffd27a;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: 0.2s;
+}
+
+.favorite-toggle:hover {
+  background: rgba(10, 10, 30, 0.75);
+}
+
+.favorite-toggle.favorited {
+  background: #ffb800;
+  color: #2a1a00;
+}
+
+.cat-image {
+  display: block;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.cat-info {
+  padding: 25px;
+  text-align: left;
+}
+
+.cat-info h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.attribute-button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #eef1ff;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.attribute-button:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateX(2px);
+}
+
+.attribute-button.banned {
+  background: rgba(255, 90, 120, 0.25);
+  border-color: #ff5a78;
+}
+
+.vibe-match {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(67deg, rgba(138, 99, 255, 0.25), rgba(50, 197, 211, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  line-height: 1.5;
+}
+
+.ban-section,
+.favorites-section {
+  margin-top: 40px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(10, 10, 40, 0.3);
+  color: #c9d2ff;
+}
+
+.ban-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ban-item {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  background: rgba(255, 90, 120, 0.25);
+  border: 1px solid #ff5a78;
+  color: #ffd6df;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ban-item:hover {
+  background: rgba(255, 90, 120, 0.4);
+}
+
+.empty-message {
+  color: #9aa3d9;
+  font-style: italic;
+}
+
+.history-section {
+  margin-top: 40px;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 20px;
+}
+
+.history-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(10, 10, 40, 0.3);
+  transition: transform 0.2s;
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
+}
+
+.history-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.history-card div {
+  padding: 12px;
+}
+
+.history-card p {
+  margin-bottom: 0;
+  color: #b7bfe8;
+}
+
+.favorite-card .remove-favorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  background: rgba(10, 10, 30, 0.6);
+  color: #ffd6df;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.favorite-card .remove-favorite:hover {
+  background: #ff5a78;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 2.3rem;
+  }
+
+  .cat-image {
+    height: 300px;
+  }
+
+  .container {
+    width: 94%;
+  }
+}
